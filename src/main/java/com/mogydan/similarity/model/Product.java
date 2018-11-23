@@ -1,0 +1,27 @@
+package com.mogydan.similarity.model;
+
+import lombok.Data;
+import lombok.experimental.Accessors;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+@Data
+@Accessors(chain = true)
+public class Product {
+
+    @Id
+    @GeneratedValue(generator = "product_increment")
+    @GenericGenerator(name = "product_increment", strategy = "increment")
+    @Column(name = "product_id")
+    private Long id;
+
+    private String name;
+
+    private String color;
+
+    private double price;
+}
+
+
