@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <PRODUCT PRODUCT_ID="1" NAME="Mouse" COLOR="Black" PRICE="2.0" />
-    <PRODUCT PRODUCT_ID="2" NAME="Mouse" COLOR="Pink" PRICE="21.0" />
-    <PRODUCT PRODUCT_ID="5" NAME="Keyboard" COLOR="Violet" PRICE="123.99" />
+    <PRODUCT ID="1" NAME="Mouse" COLOR="Black" PRICE="2.0" />
+    <PRODUCT ID="2" NAME="Mouse" COLOR="Pink" PRICE="21.0" />
+    <PRODUCT ID="5" NAME="Keyboard" COLOR="Violet" PRICE="123.99" />
 </dataset>

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <PRODUCT PRODUCT_ID="1" NAME="Mouse" COLOR="Black" PRICE="2.0" />
+    <PRODUCT ID="1" NAME="Mouse" COLOR="Black" PRICE="2.0" />
 </dataset>
