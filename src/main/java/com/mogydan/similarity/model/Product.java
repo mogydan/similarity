@@ -1,6 +1,7 @@
 package com.mogydan.similarity.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @Accessors(chain = true)
+@EqualsAndHashCode(exclude = "id")
 public class Product {
 
     @Id

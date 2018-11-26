@@ -16,7 +16,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
     @Override
-    public Product addProduct(Product product) {
+    public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void updateProduct(Product updates, String productId) {
+    public void updateProduct(String productId, Product updates) {
         Product product = getProductById(productId);
         product.setName(updates.getName());
         product.setColor(updates.getColor());

@@ -12,11 +12,11 @@ public interface ProductService {
 
     Product getProductById(String productId);
 
-    Product addProduct(Product product);
+    Product createProduct(Product product);
 
     void addProducts(List<Product> products);
 
-    void updateProduct(Product product, String productId);
+    void updateProduct(String productId, Product product);
 
     void deleteProductById(String productId);
 
