@@ -27,7 +27,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         webEnvironment = SpringBootTest.WebEnvironment.MOCK,
         classes = SimilarityApplication.class
 )
-@TestExecutionListeners(value = DbUnitTestExecutionListener.class, mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS)
+@TestExecutionListeners(
+        value = DbUnitTestExecutionListener.class,
+        mergeMode = TestExecutionListeners.MergeMode.MERGE_WITH_DEFAULTS
+)
 @AutoConfigureMockMvc
 @DatabaseTearDown("/cleanAllTables.xml")
 public class ProductControllerIntegrationTest {
@@ -105,15 +108,6 @@ public class ProductControllerIntegrationTest {
     @SneakyThrows
     @Test
     @DatabaseSetup("/ProductControllerIntegrationTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/ProductControllerIntegrationTest/deleteProductExpected.xml", table = "PRODUCT")
-    public void deleteProduct() {
-        mvc.perform(delete("/products/2"))
-                .andExpect(status().isOk());
-    }
-
-    @SneakyThrows
-    @Test
-    @DatabaseSetup("/ProductControllerIntegrationTest/initialDatabase.xml")
     @ExpectedDatabase(value = "/ProductControllerIntegrationTest/updateProductExpected.xml", table = "PRODUCT")
     public void updateProduct() {
         mvc.perform(
@@ -121,6 +115,15 @@ public class ProductControllerIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"name\": \"Keyboard\",\"color\": \"Violet\", \"price\": 123.99}")
         )
+                .andExpect(status().isOk());
+    }
+
+    @SneakyThrows
+    @Test
+    @DatabaseSetup("/ProductControllerIntegrationTest/initialDatabase.xml")
+    @ExpectedDatabase(value = "/ProductControllerIntegrationTest/deleteProductExpected.xml", table = "PRODUCT")
+    public void deleteProduct() {
+        mvc.perform(delete("/products/2"))
                 .andExpect(status().isOk());
     }
 
