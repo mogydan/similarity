@@ -4,7 +4,7 @@ import com.mogydan.similarity.exception.ResourceNotFoundException;
 import com.mogydan.similarity.model.Customer;
 import com.mogydan.similarity.service.CustomerService;
 import io.swagger.annotations.*;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/customers")
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Api(value = "Customers", description = "Customers controller", tags = {"Customers"})
 public class CustomerController {
 

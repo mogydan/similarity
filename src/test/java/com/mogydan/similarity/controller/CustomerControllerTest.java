@@ -16,7 +16,6 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -39,8 +38,8 @@ public class CustomerControllerTest {
 
     @SneakyThrows
     @Test
-    @DatabaseSetup("/CustomerControllerTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/CustomerControllerTest/createCustomerExpected.xml", table = "CUSTOMER")
+    @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
+    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/createCustomerExpected.xml", table = "CUSTOMER")
     public void createCustomer() {
         mvc.perform(
                 post("/customers")
@@ -55,8 +54,8 @@ public class CustomerControllerTest {
 
     @SneakyThrows
     @Test
-    @DatabaseSetup("/CustomerControllerTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/CustomerControllerTest/addAllCustomersExpected.xml", table = "CUSTOMER")
+    @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
+    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/addAllCustomersExpected.xml", table = "CUSTOMER")
     public void addCustomers() {
         mvc.perform(
                 post("/customers/addAll")
@@ -70,7 +69,7 @@ public class CustomerControllerTest {
 
     @SneakyThrows
     @Test
-    @DatabaseSetup("/CustomerControllerTest/initialDatabase.xml")
+    @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
     public void getCustomer() {
         mvc.perform(get("/customers/1"))
                 .andExpect(status().isOk())
@@ -82,7 +81,7 @@ public class CustomerControllerTest {
 
     @SneakyThrows
     @Test
-    @DatabaseSetup("/CustomerControllerTest/initialDatabase.xml")
+    @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
     public void getCustomerNotFound() {
         mvc.perform(get("/customers/11"))
                 .andExpect(status().isNotFound())
@@ -91,8 +90,8 @@ public class CustomerControllerTest {
 
     @SneakyThrows
     @Test
-    @DatabaseSetup("/CustomerControllerTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/CustomerControllerTest/initialDatabase.xml", table = "CUSTOMER")
+    @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
+    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/initialDatabase.xml", table = "CUSTOMER")
     public void getAllCustomers() {
         mvc.perform(get("/customers"))
                 .andExpect(status().isOk())
@@ -107,8 +106,8 @@ public class CustomerControllerTest {
 
     @SneakyThrows
     @Test
-    @DatabaseSetup("/CustomerControllerTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/CustomerControllerTest/updateCustomerExpected.xml", table = "CUSTOMER")
+    @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
+    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/updateCustomerExpected.xml", table = "CUSTOMER")
     public void updateCustomer() {
         mvc.perform(
                 put("/customers/2")
@@ -120,8 +119,8 @@ public class CustomerControllerTest {
 
     @SneakyThrows
     @Test
-    @DatabaseSetup("/CustomerControllerTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/CustomerControllerTest/deleteCustomerExpected.xml", table = "CUSTOMER")
+    @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
+    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/deleteCustomerExpected.xml", table = "CUSTOMER")
     public void deleteCustomer() {
         mvc.perform(delete("/customers/2"))
                 .andExpect(status().isOk());
@@ -129,8 +128,8 @@ public class CustomerControllerTest {
 
     @SneakyThrows
     @Test
-    @DatabaseSetup("/CustomerControllerTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/CustomerControllerTest/initialDatabase.xml", table = "CUSTOMER")
+    @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
+    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/initialDatabase.xml", table = "CUSTOMER")
     public void deleteCustomerNotFound() {
         mvc.perform(delete("/customers/11"))
                 .andExpect(status().isNotFound())

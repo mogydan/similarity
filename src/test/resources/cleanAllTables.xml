@@ -2,4 +2,6 @@
 <dataset>
     <PRODUCT />
     <CUSTOMER />
+    <PURCHASE_ORDER />
+    <ORDER_DETAILS />
 </dataset>

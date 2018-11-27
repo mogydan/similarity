@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <CUSTOMER ID="1" NAME="Customer1" EMAIL="customer1@m.com" />
+    <CUSTOMER ID="2" NAME="Customer2" EMAIL="customer2@m.com" />
+
+    <PURCHASE_ORDER ID="1" CUSTOMER_ID="1" />
+    <PURCHASE_ORDER ID="2" CUSTOMER_ID="1" />
+
+    <PRODUCT />
+
+    <ORDER_DETAILS />
+</dataset>

@@ -102,10 +102,10 @@ public class ProductController {
     )
     public void updateProduct(
             @ApiParam(value = "The id of the product to update", required = true) @PathVariable String productId,
-            @ApiParam(value = "Body of updated product", required = true) @Valid @RequestBody Product product
+            @ApiParam(value = "Body of updated product", required = true) @Valid @RequestBody Product updates
     ) {
 
-        productService.updateProduct(productId, product);
+        productService.updateProduct(productId, updates);
     }
 
     @DeleteMapping("/{productId}")
