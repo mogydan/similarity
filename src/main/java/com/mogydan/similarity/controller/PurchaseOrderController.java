@@ -2,7 +2,6 @@ package com.mogydan.similarity.controller;
 
 import com.mogydan.similarity.exception.ResourceNotFoundException;
 import com.mogydan.similarity.model.Customer;
-import com.mogydan.similarity.model.Product;
 import com.mogydan.similarity.model.PurchaseOrder;
 import com.mogydan.similarity.service.PurchaseOrderService;
 import io.swagger.annotations.*;
@@ -49,14 +48,14 @@ public class PurchaseOrderController {
             }
     )
     public void addOrders(
-            @ApiParam(value = "Add the list of products to the store", required = true)
+            @ApiParam(value = "Add the list of orders to the store", required = true)
             @Valid @RequestBody List<PurchaseOrder> orders
     ) {
         purchaseOrderService.addOrders(orders);
     }
 
     @GetMapping("/{orderId}")
-    @ApiOperation(value = "Info for a specific product", response = PurchaseOrder.class, tags = {"Orders"})
+    @ApiOperation(value = "Info for a specific order", response = PurchaseOrder.class, tags = {"Orders"})
     @ApiResponses(
             value = {
                     @ApiResponse(code = 200, message = "Ok", response = PurchaseOrder.class),
@@ -99,7 +98,7 @@ public class PurchaseOrderController {
     )
     public void updateOrder(
             @ApiParam(value = "The id of the Order to update", required = true) @PathVariable String orderId,
-            @ApiParam(value = "Updates", required = true) @Valid @RequestBody PurchaseOrder updates
+            @ApiParam(value = "Updates", required = true) @RequestBody PurchaseOrder updates
     ) {
         purchaseOrderService.updateOrder(updates, orderId);
     }
