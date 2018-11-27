@@ -53,7 +53,6 @@ public class OrderDetailsControllerIntegrationTest {
                 );
     }
 
-    @Ignore
     @Test
     @SneakyThrows
     @DatabaseSetup("/OrderDetailsControllerIntegrationTest/initialDatabase.xml")
@@ -63,8 +62,8 @@ public class OrderDetailsControllerIntegrationTest {
                 post("/orderDetails/addAll")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("[" +
-                                "{\"id\":6,\"purchaseOrder\":{\"id\":4,\"customer\":null},\"product\":{\"id\":2,\"name\":null,\"color\":null,\"price\":0.0},\"amount\":1}," +
-                                "{\"id\":7,\"purchaseOrder\":{\"id\":4,\"customer\":null},\"product\":{\"id\":1,\"name\":null,\"color\":null,\"price\":0.0},\"amount\":1}" +
+                                "{\"id\":null,\"purchaseOrder\":{\"id\":4,\"customer\":{\"id\":1,\"name\":\"Customer1\",\"email\":\"customer1@m.com\"}},\"product\":{\"id\":1,\"name\":\"Mouse\",\"color\":\"Black\",\"price\":2.0},\"amount\":2}," +
+                                "{\"id\":null,\"purchaseOrder\":{\"id\":4,\"customer\":{\"id\":1,\"name\":\"Customer1\",\"email\":\"customer1@m.com\"}},\"product\":{\"id\":2,\"name\":\"Keyboard\",\"color\":\"red\",\"price\":12.0},\"amount\":1}" +
                                 "]"))
                 .andExpect(status().isOk());
     }
