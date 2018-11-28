@@ -14,7 +14,7 @@ public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", updatable = false, nullable = false)
-    private Long id;
+    private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PURCHASE_ORDER_ID", nullable = false, foreignKey = @ForeignKey(name = "ORD_FK"))
@@ -27,5 +27,17 @@ public class OrderDetails {
     private Product product;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Long amount;
+    private long amount;
+
+    public long getProductAmount(Long productId) {
+        return productId == product.getId() ? amount : 0;
+    }
+
+    public long getPurchaseOrderId() {
+        return purchaseOrder.getId();
+    }
+
+    public long getProductId() {
+        return product.getId();
+    }
 }

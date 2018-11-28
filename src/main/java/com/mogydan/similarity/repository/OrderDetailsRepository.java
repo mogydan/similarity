@@ -19,4 +19,11 @@ public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long
                     "from OrderDetails group by product.id order by sum(amount) desc"
     )
     List<ProductAmount> getTopSoldProducts();
+
+    Optional<OrderDetails> findByPurchaseOrder_IdAndProduct_Id(Long orderId, Long productId);
+
+    @Query(
+            value = "select distinct product.id from OrderDetails"
+    )
+    List<Long> getPurchasedProductsIds();
 }

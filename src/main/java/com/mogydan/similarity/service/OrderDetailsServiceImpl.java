@@ -65,6 +65,18 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
+    public long getProductAmountInOrder(Long orderId, Long productId) {
+        OrderDetails orderDetails = orderDetailsRepository.findByPurchaseOrder_IdAndProduct_Id(orderId, productId)
+                .orElseGet(() -> new OrderDetails().setAmount(0L));
+        return orderDetails.getAmount();
+    }
+
+    @Override
+    public List<Long> getPurchasedProductsIds() {
+        return orderDetailsRepository.getPurchasedProductsIds();
+    }
+
+    @Override
     public void clear() {
         orderDetailsRepository.deleteAll();
     }

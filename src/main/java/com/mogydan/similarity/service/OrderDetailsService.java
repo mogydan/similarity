@@ -22,5 +22,9 @@ public interface OrderDetailsService {
 
     List<ProductAmount> getTopSoldProducts();
 
+    long getProductAmountInOrder(Long orderId, Long productId);
+
+    List<Long> getPurchasedProductsIds();
+
     void clear();
 }

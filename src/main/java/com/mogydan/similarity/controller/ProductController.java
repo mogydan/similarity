@@ -28,7 +28,7 @@ public class ProductController {
     )
     public Product getById(
             @ApiParam(value = "The id of the product to retrieve", required = true)
-            @PathVariable("id") String id
+            @PathVariable("id") Long id
     ) {
         return productService.getProductById(id);
     }
@@ -101,7 +101,7 @@ public class ProductController {
             }
     )
     public void updateProduct(
-            @ApiParam(value = "The id of the product to update", required = true) @PathVariable String productId,
+            @ApiParam(value = "The id of the product to update", required = true) @PathVariable long productId,
             @ApiParam(value = "Body of updated product", required = true) @Valid @RequestBody Product updates
     ) {
 
@@ -117,7 +117,7 @@ public class ProductController {
             }
     )
     public void deleteProduct(
-            @ApiParam(value = "The id of the product to delete", required = true) @PathVariable String productId
+            @ApiParam(value = "The id of the product to delete", required = true) @PathVariable long productId
     ) {
         productService.deleteProductById(productId);
     }

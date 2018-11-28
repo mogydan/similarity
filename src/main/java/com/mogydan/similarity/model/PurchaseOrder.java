@@ -15,7 +15,7 @@ public class PurchaseOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    private Long id;
+    private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CUSTOMER_ID", nullable = false, foreignKey = @ForeignKey(name = "CUST_FK"))

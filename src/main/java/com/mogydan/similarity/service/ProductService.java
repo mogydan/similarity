@@ -10,15 +10,15 @@ public interface ProductService {
 
     List<Product> getAllProducts();
 
-    Product getProductById(String productId);
+    Product getProductById(long productId);
 
     Product createProduct(Product product);
 
     void addProducts(List<Product> products);
 
-    void updateProduct(String productId, Product product);
+    void updateProduct(long productId, Product product);
 
-    void deleteProductById(String productId);
+    void deleteProductById(long productId);
 
     void clear();
 }

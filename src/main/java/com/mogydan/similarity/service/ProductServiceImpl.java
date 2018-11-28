@@ -26,8 +26,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(String productId) {
-        return productRepository.findById(Long.parseLong(productId))
+    public Product getProductById(long productId) {
+        return productRepository.findById(productId)
                          .orElseThrow(() -> new ResourceNotFoundException("Product with id = {0} was not found", productId));
     }
 
@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void updateProduct(String productId, Product updates) {
+    public void updateProduct(long productId, Product updates) {
         Product product = getProductById(productId);
         product.setName(updates.getName());
         product.setColor(updates.getColor());
@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteProductById(String productId) {
+    public void deleteProductById(long productId) {
         productRepository.delete(getProductById(productId));
     }
 

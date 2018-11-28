@@ -17,7 +17,7 @@ public class Product {
     @GeneratedValue(generator = "product_increment")
     @GenericGenerator(name = "product_increment", strategy = "increment")
     @Column(name = "ID")
-    private Long id;
+    private long id;
 
     @Column(name = "NAME")
     private String name;
