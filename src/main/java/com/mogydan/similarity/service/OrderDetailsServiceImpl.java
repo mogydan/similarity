@@ -2,6 +2,7 @@ package com.mogydan.similarity.service;
 
 import com.mogydan.similarity.exception.ResourceNotFoundException;
 import com.mogydan.similarity.model.OrderDetails;
+import com.mogydan.similarity.model.ProductAmount;
 import com.mogydan.similarity.model.PurchaseOrder;
 import com.mogydan.similarity.repository.OrderDetailsRepository;
 import lombok.RequiredArgsConstructor;
@@ -56,6 +57,11 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     @Override
     public void deleteOrderDetails(String orderId) {
         orderDetailsRepository.delete(getOrderDetailById(orderId));
+    }
+
+    @Override
+    public List<ProductAmount> getTopSoldProducts() {
+        return orderDetailsRepository.getTopSoldProducts();
     }
 
     @Override

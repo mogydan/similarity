@@ -6,11 +6,12 @@ import lombok.experimental.Accessors;
 import javax.validation.constraints.NotNull;
 
 @Data
+@AllArgsConstructor
 @Accessors(chain = true)
 public class ProductAmount {
 
     @NotNull
-    private String productId;
+    private long productId;
 
     @NotNull
     private long amount;

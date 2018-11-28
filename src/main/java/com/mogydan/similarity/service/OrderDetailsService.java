@@ -1,6 +1,7 @@
 package com.mogydan.similarity.service;
 
 import com.mogydan.similarity.model.OrderDetails;
+import com.mogydan.similarity.model.ProductAmount;
 
 import java.util.List;
 
@@ -18,6 +19,8 @@ public interface OrderDetailsService {
     void updateOrderDetails(OrderDetails updates, String orderDetailId);
 
     void deleteOrderDetails(String orderId);
+
+    List<ProductAmount> getTopSoldProducts();
 
     void clear();
 }

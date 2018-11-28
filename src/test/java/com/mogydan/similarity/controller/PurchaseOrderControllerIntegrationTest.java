@@ -40,7 +40,7 @@ public class PurchaseOrderControllerIntegrationTest {
     @SneakyThrows
     @Test
     @DatabaseSetup("/PurchaseOrderControllerIntegrationTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/PurchaseOrderControllerIntegrationTest/addOrderExpected.xml", assertionMode= DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = "/PurchaseOrderControllerIntegrationTest/addOrderExpected.xml")
     public void addOrder() {
         mvc.perform(
                 post("/orders").param("customerId", "2"))
@@ -53,7 +53,7 @@ public class PurchaseOrderControllerIntegrationTest {
     @SneakyThrows
     @Test
     @DatabaseSetup("/PurchaseOrderControllerIntegrationTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/PurchaseOrderControllerIntegrationTest/addOrdersExpected.xml", assertionMode=DatabaseAssertionMode.NON_STRICT)
+    @ExpectedDatabase(value = "/PurchaseOrderControllerIntegrationTest/addOrdersExpected.xml")
     public void addOrders() {
         mvc.perform(
                 post("/orders/addAll")
