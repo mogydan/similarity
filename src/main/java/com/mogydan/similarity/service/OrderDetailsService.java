@@ -26,5 +26,11 @@ public interface OrderDetailsService {
 
     List<Long> getPurchasedProductsIds();
 
+    long getProductAmount(long productId, long orderId);
+
+    List<Long> getAllOrdersIds();
+
+    long[] prepare(long productId, List<Long> ids);
+
     void clear();
 }

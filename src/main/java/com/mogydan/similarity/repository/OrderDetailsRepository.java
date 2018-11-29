@@ -26,4 +26,10 @@ public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long
             value = "select distinct product.id from OrderDetails"
     )
     List<Long> getPurchasedProductsIds();
+
+    @Query("select amount from OrderDetails where product.id = ?1 and purchaseOrder.id = ?2")
+    Optional<Long> getProductAmount(long productId, long orderId);
+
+    @Query("select distinct purchaseOrder.id from OrderDetails ")
+    List<Long> getAllOrdersIds();
 }

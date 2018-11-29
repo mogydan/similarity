@@ -4,6 +4,7 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DatabaseTearDown;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.mogydan.similarity.SimilarityApplication;
 import lombok.SneakyThrows;
 import org.junit.Test;
@@ -39,23 +40,20 @@ public class CustomerControllerTest {
     @SneakyThrows
     @Test
     @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/createCustomerExpected.xml", table = "CUSTOMER")
+    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/createCustomerExpected.xml", table = "CUSTOMER", assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void createCustomer() {
         mvc.perform(
                 post("/customers")
                         .param("name", "NewCustomer")
                         .param("email", "newEmail@m.com")
         )
-                .andExpect(status().isOk())
-                .andExpect(content()
-                        .json("{\"id\":5,\"name\":\"NewCustomer\",\"email\":\"newEmail@m.com\"}")
-                );
+                .andExpect(status().isOk());
     }
 
     @SneakyThrows
     @Test
     @DatabaseSetup("/CustomerControllerIntegrationTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/addAllCustomersExpected.xml", table = "CUSTOMER")
+    @ExpectedDatabase(value = "/CustomerControllerIntegrationTest/addAllCustomersExpected.xml", table = "CUSTOMER", assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void addCustomers() {
         mvc.perform(
                 post("/customers/addAll")

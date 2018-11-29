@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <CUSTOMER ID="1" NAME="Customer1" EMAIL="customer1@m.com" />
-    <CUSTOMER ID="2" NAME="Customer2" EMAIL="customer2@m.com" />
-    <CUSTOMER ID="3" NAME="Customer3" EMAIL="customer3@m.com" />
-    <CUSTOMER ID="4" NAME="Customer4" EMAIL="customer4@m.com" />
+    <CUSTOMER NAME="Customer1" EMAIL="customer1@m.com" />
+    <CUSTOMER NAME="Customer2" EMAIL="customer2@m.com" />
+    <CUSTOMER NAME="Customer3" EMAIL="customer3@m.com" />
+    <CUSTOMER NAME="Customer4" EMAIL="customer4@m.com" />
 </dataset>

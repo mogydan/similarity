@@ -4,9 +4,9 @@ import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.DatabaseTearDown;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.mogydan.similarity.SimilarityApplication;
 import lombok.SneakyThrows;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,23 +40,20 @@ public class OrderDetailsControllerIntegrationTest {
     @Test
     @SneakyThrows
     @DatabaseSetup("/OrderDetailsControllerIntegrationTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/OrderDetailsControllerIntegrationTest/createOrderDetailExpected.xml")
+    @ExpectedDatabase(value = "/OrderDetailsControllerIntegrationTest/createOrderDetailExpected.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void createOrderDetails() {
         mvc.perform(
                 post("/orderDetails")
                         .param("amount", "1")
                         .param("productId", "4")
                         .param("orderId", "4"))
-                .andExpect(status().isOk())
-                .andExpect(content()
-                        .json("{\"id\":6,\"purchaseOrder\":{\"id\":4,\"customer\":null},\"product\":{\"id\":4,\"name\":null,\"color\":null,\"price\":0.0},\"amount\":1}")
-                );
+                .andExpect(status().isOk());
     }
 
     @Test
     @SneakyThrows
     @DatabaseSetup("/OrderDetailsControllerIntegrationTest/initialDatabase.xml")
-    @ExpectedDatabase(value = "/OrderDetailsControllerIntegrationTest/addListOfOrderDetailsExpected.xml")
+    @ExpectedDatabase(value = "/OrderDetailsControllerIntegrationTest/addListOfOrderDetailsExpected.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
     public void addListOfOrderDetails() {
         mvc.perform(
                 post("/orderDetails/addAll")
