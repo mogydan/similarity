@@ -10,13 +10,13 @@ public interface PurchaseOrderService {
 
     void addOrders(List<PurchaseOrder> order);
 
-    PurchaseOrder getOrder(String orderId);
+    PurchaseOrder getOrder(long orderId);
 
     List<PurchaseOrder> getAllOrders();
 
-    void updateOrder(PurchaseOrder order, String orderId);
+    void updateOrder(PurchaseOrder order, long orderId);
 
-    void deleteOrder(String orderId);
+    void deleteOrder(long orderId);
 
     void clear();
 }

@@ -45,8 +45,9 @@ public class CustomerController {
                     @ApiResponse(code = 400, message = "unexpected error", response = ResourceNotFoundException.class)
             }
     )
-    public void addCustomers(@ApiParam(value = "List of customers", required = true)
-                             @Valid @RequestBody List<Customer> customers) {
+    public void addCustomers(
+            @ApiParam(value = "List of customers", required = true) @Valid @RequestBody List<Customer> customers
+    ) {
         customerService.addCustomers(customers);
     }
 
@@ -59,7 +60,7 @@ public class CustomerController {
             }
     )
     public Customer getCustomer(
-            @ApiParam(value = "The id of the customer to retrieve", required = true) @PathVariable String customerId
+            @ApiParam(value = "The id of the customer to retrieve", required = true) @PathVariable long customerId
     ) {
         return customerService.getCustomer(customerId);
     }
@@ -91,7 +92,7 @@ public class CustomerController {
             @ApiResponse(code = 400, message = "unexpected error", response = ResourceNotFoundException.class)
     })
     public void updateCustomer(
-            @ApiParam(value = "The id of the customer to update", required = true) @PathVariable String customerId,
+            @ApiParam(value = "The id of the customer to update", required = true) @PathVariable long customerId,
             @ApiParam(value = "Body of updated customer", required = true) @Valid @RequestBody Customer customer
     ) {
         customerService.updateCustomer(customer, customerId);
@@ -106,7 +107,7 @@ public class CustomerController {
             }
     )
     public void deleteCustomerById(
-            @ApiParam(value = "The id of the customer to delete", required = true) @PathVariable String customerId
+            @ApiParam(value = "The id of the customer to delete", required = true) @PathVariable long customerId
     ) {
         customerService.deleteCustomer(customerId);
     }

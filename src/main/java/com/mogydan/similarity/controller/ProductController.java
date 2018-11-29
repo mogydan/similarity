@@ -28,7 +28,7 @@ public class ProductController {
     )
     public Product getById(
             @ApiParam(value = "The id of the product to retrieve", required = true)
-            @PathVariable("id") Long id
+            @PathVariable("id") long id
     ) {
         return productService.getProductById(id);
     }

@@ -26,8 +26,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getCustomer(String customerId) {
-        return customerRepository.findById(Long.parseLong(customerId))
+    public Customer getCustomer(long customerId) {
+        return customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer with id = {0} was not found", customerId));
     }
 
@@ -44,7 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateCustomer(Customer updates, String customerId) {
+    public void updateCustomer(Customer updates, long customerId) {
         Customer customer = getCustomer(customerId)
                 .setName(updates.getName())
                 .setEmail(updates.getEmail());
@@ -52,7 +52,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteCustomer(String customerId) {
+    public void deleteCustomer(long customerId) {
         customerRepository.delete(getCustomer(customerId));
     }
 

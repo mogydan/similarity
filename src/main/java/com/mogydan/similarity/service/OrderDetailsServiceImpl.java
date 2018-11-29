@@ -27,10 +27,10 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public List<OrderDetails> getOrderDetailsByOrderId(String orderDetailsId) {
+    public List<OrderDetails> getOrderDetailsByOrderId(long orderDetailsId) {
         return orderDetailsRepository.findByPurchaseOrder(
                 new PurchaseOrder()
-                        .setId(Long.parseLong(orderDetailsId))
+                        .setId(orderDetailsId)
         );
     }
 
@@ -40,13 +40,13 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public OrderDetails getOrderDetailById(String orderDetailId) {
-        return orderDetailsRepository.findById(Long.parseLong(orderDetailId))
+    public OrderDetails getOrderDetailById(long orderDetailId) {
+        return orderDetailsRepository.findById(orderDetailId)
                 .orElseThrow(() -> new ResourceNotFoundException("OrderDetail with id = {0} was not found", orderDetailId));
     }
 
     @Override
-    public void updateOrderDetails(OrderDetails updates, String orderDetailId) {
+    public void updateOrderDetails(OrderDetails updates, long orderDetailId) {
         OrderDetails orderDetails = getOrderDetailById(orderDetailId)
                 .setPurchaseOrder(updates.getPurchaseOrder())
                 .setAmount(updates.getAmount())
@@ -55,7 +55,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public void deleteOrderDetails(String orderId) {
+    public void deleteOrderDetails(long orderId) {
         orderDetailsRepository.delete(getOrderDetailById(orderId));
     }
 
@@ -65,7 +65,7 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public long getProductAmountInOrder(Long orderId, Long productId) {
+    public long getProductAmountInOrder(long orderId, long productId) {
         OrderDetails orderDetails = orderDetailsRepository.findByPurchaseOrder_IdAndProduct_Id(orderId, productId)
                 .orElseGet(() -> new OrderDetails().setAmount(0L));
         return orderDetails.getAmount();

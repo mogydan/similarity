@@ -28,13 +28,13 @@ public class PurchaseOrderController {
             }
     )
     public PurchaseOrder addOrder(
-            @ApiParam(value = "Customer's id", required = true) @RequestParam("customerId") String customerId
+            @ApiParam(value = "Customer's id", required = true) @RequestParam("customerId") long customerId
     ) {
         return purchaseOrderService.createOrder(
                 new PurchaseOrder()
                         .setCustomer(
                                 new Customer()
-                                        .setId(Long.parseLong(customerId))
+                                        .setId(customerId)
                         )
         );
     }
@@ -63,7 +63,7 @@ public class PurchaseOrderController {
             }
     )
     public PurchaseOrder getOrder(
-            @ApiParam(value = "The id of the order to retrieve", required = true) @PathVariable String orderId
+            @ApiParam(value = "The id of the order to retrieve", required = true) @PathVariable long orderId
     ) {
         return purchaseOrderService.getOrder(orderId);
     }
@@ -97,7 +97,7 @@ public class PurchaseOrderController {
             }
     )
     public void updateOrder(
-            @ApiParam(value = "The id of the Order to update", required = true) @PathVariable String orderId,
+            @ApiParam(value = "The id of the Order to update", required = true) @PathVariable long orderId,
             @ApiParam(value = "Updates", required = true) @RequestBody PurchaseOrder updates
     ) {
         purchaseOrderService.updateOrder(updates, orderId);
@@ -112,7 +112,7 @@ public class PurchaseOrderController {
             }
     )
     public void deleteOrder(
-            @ApiParam(value = "The id of the order to delete", required = true) @PathVariable String orderId
+            @ApiParam(value = "The id of the order to delete", required = true) @PathVariable long orderId
     ) {
         purchaseOrderService.deleteOrder(orderId);//TODO need to delete related OrderDetails too
     }

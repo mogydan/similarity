@@ -25,8 +25,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public PurchaseOrder getOrder(String orderId) {
-        return orderRepository.findById(Long.parseLong(orderId))
+    public PurchaseOrder getOrder(long orderId) {
+        return orderRepository.findById(orderId)
                 .orElseThrow(() -> new ResourceNotFoundException("Order with id = {0} was not found", orderId));
     }
 
@@ -36,14 +36,14 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
-    public void updateOrder(PurchaseOrder updates, String orderId) {
+    public void updateOrder(PurchaseOrder updates, long orderId) {
         PurchaseOrder order = getOrder(orderId)
                 .setCustomer(updates.getCustomer());
         orderRepository.save(order);
     }
 
     @Override
-    public void deleteOrder(String orderId) {
+    public void deleteOrder(long orderId) {
         orderRepository.delete(getOrder(orderId));
     }
 

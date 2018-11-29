@@ -29,19 +29,19 @@ public class OrderDetailsController {
             }
     )
     public OrderDetails createOrderDetails(
-            @ApiParam(value = "Amount", required = true) @Valid @RequestParam("amount") Long amount,
-            @ApiParam(value = "Product Id", required = true) @Valid @RequestParam("productId") String productId,
-            @ApiParam(value = "Purchase Order Id", required = true) @Valid @RequestParam("orderId") String orderId
+            @ApiParam(value = "Amount", required = true) @Valid @RequestParam("amount") long amount,
+            @ApiParam(value = "Product Id", required = true) @Valid @RequestParam("productId") long productId,
+            @ApiParam(value = "Purchase Order Id", required = true) @Valid @RequestParam("orderId") long orderId
     ) {
         return orderDetailsService.createOrderDetails(
                 new OrderDetails()
                         .setAmount(amount)
                         .setProduct(new Product()
-                                .setId(Long.parseLong(productId))
+                                .setId(productId)
                         )
                         .setPurchaseOrder(
                                 new PurchaseOrder()
-                                        .setId(Long.parseLong(orderId))
+                                        .setId(orderId)
                         )
         );
     }
@@ -81,7 +81,7 @@ public class OrderDetailsController {
             })
     public List<OrderDetails> getOrderDetailsByOrderId(
             @ApiParam(value = "Order Id to get its Order Details", required = true)
-            @PathVariable String orderId
+            @PathVariable long orderId
     ) {
         return orderDetailsService.getOrderDetailsByOrderId(orderId);
     }
@@ -116,7 +116,7 @@ public class OrderDetailsController {
     )
     public OrderDetails getOrderDetailById(
             @ApiParam(value = "The id of the Order Detail to retrieve", required = true)
-            @PathVariable String orderDetailId
+            @PathVariable long orderDetailId
     ) {
         return orderDetailsService.getOrderDetailById(orderDetailId);
     }
@@ -130,7 +130,7 @@ public class OrderDetailsController {
             }
     )
     public void updateOrderDetails(
-            @ApiParam(value = "The id of the Order Detail to update", required = true) @PathVariable String orderDetailId,
+            @ApiParam(value = "The id of the Order Detail to update", required = true) @PathVariable long orderDetailId,
             @ApiParam(value = "Updates", required = true) @RequestBody OrderDetails updates
     ) {
         orderDetailsService.updateOrderDetails(updates, orderDetailId);
@@ -146,7 +146,7 @@ public class OrderDetailsController {
     )
     public void deleteOrderDetails(
             @ApiParam(value = "The id of the Order Detail to delete", required = true)
-            @PathVariable String orderDetailId
+            @PathVariable long orderDetailId
     ) {
         orderDetailsService.deleteOrderDetails(orderDetailId);
     }

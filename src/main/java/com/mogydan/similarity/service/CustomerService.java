@@ -10,15 +10,15 @@ public interface CustomerService {
 
     void addCustomers(List<Customer> customers);
 
-    Customer getCustomer(String customerId);
+    Customer getCustomer(long customerId);
 
     List<Customer> getAllCustomers();
 
     List<Long> getAllCustomersIds();
 
-    void updateCustomer(Customer customer, String customerId);
+    void updateCustomer(Customer customer, long customerId);
 
-    void deleteCustomer(String customerId);
+    void deleteCustomer(long customerId);
 
     void clear();
 }

@@ -10,19 +10,19 @@ public interface OrderDetailsService {
 
     void addListOfOrderDetails(List<OrderDetails> orderDetails);
 
-    List<OrderDetails> getOrderDetailsByOrderId(String orderId);
+    List<OrderDetails> getOrderDetailsByOrderId(long orderId);
 
     List<OrderDetails> getAllOrderDetails();
 
-    OrderDetails getOrderDetailById(String orderDetailId);
+    OrderDetails getOrderDetailById(long orderDetailId);
 
-    void updateOrderDetails(OrderDetails updates, String orderDetailId);
+    void updateOrderDetails(OrderDetails updates, long orderDetailId);
 
-    void deleteOrderDetails(String orderId);
+    void deleteOrderDetails(long orderId);
 
     List<ProductAmount> getTopSoldProducts();
 
-    long getProductAmountInOrder(Long orderId, Long productId);
+    long getProductAmountInOrder(long orderId, long productId);
 
     List<Long> getPurchasedProductsIds();
 
