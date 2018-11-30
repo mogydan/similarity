@@ -48,6 +48,16 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     }
 
     @Override
+    public List<Long> getBuyersIds() {
+        return orderRepository.getBuyersIds();
+    }
+
+    @Override
+    public List<Long> getCustomerOrdersIds(long customerId){
+        return orderRepository.getCustomerOrdersIds(customerId);
+    }
+
+    @Override
     public void clear() {
         orderRepository.deleteAll();
     }

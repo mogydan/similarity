@@ -18,7 +18,7 @@ public class SimilarityVector {
         this.elements = prepareMap(elements);
     }
 
-    public SimilarityVector(Map<String, Long> purchaseStatistic, Set<String> commonIds) {
+    public SimilarityVector(Map<Long, Long> purchaseStatistic, Set<Long> commonIds) {
         long[] elements = commonIds.stream()
                 .mapToLong(id -> purchaseStatistic.getOrDefault(id, 0L))
                 .toArray();

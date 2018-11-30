@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <PRODUCT ID="1" NAME="Mouse" COLOR="Black" PRICE="2.0" />
+    <PRODUCT ID="2" NAME="Keyboard" COLOR="Red" PRICE="12.0" />
+    <PRODUCT ID="3" NAME="USB Hub" COLOR="Pink" PRICE="21.0" />
+    <PRODUCT ID="4" NAME="Ball" COLOR="White" PRICE="55.0" />
+    <PRODUCT ID="5" NAME="Table" COLOR="Blue" PRICE="155.0" />
+
+    <CUSTOMER ID="1" NAME="Customer1" EMAIL="customer1@m.com" />
+    <CUSTOMER ID="2" NAME="Customer2" EMAIL="customer2@m.com" />
+    <CUSTOMER ID="3" NAME="Customer3" EMAIL="customer3@m.com" />
+    <CUSTOMER ID="4" NAME="Customer4" EMAIL="customer4@m.com" />
+    <CUSTOMER ID="5" NAME="Customer5" EMAIL="customer5@m.com" />
+
+    <PURCHASE_ORDER ID="1" CUSTOMER_ID="1" />
+    <PURCHASE_ORDER ID="2" CUSTOMER_ID="2" />
+    <PURCHASE_ORDER ID="3" CUSTOMER_ID="3" />
+    <PURCHASE_ORDER ID="4" CUSTOMER_ID="4" />
+
+
+    <ORDER_DETAILS ID="1" AMOUNT="1" PRODUCT_ID="1" PURCHASE_ORDER_ID="1" />
+    <ORDER_DETAILS ID="2" AMOUNT="4" PRODUCT_ID="2" PURCHASE_ORDER_ID="1" />
+
+    <ORDER_DETAILS ID="3" AMOUNT="7" PRODUCT_ID="1" PURCHASE_ORDER_ID="2" />
+    <ORDER_DETAILS ID="4" AMOUNT="8" PRODUCT_ID="2" PURCHASE_ORDER_ID="2" />
+    <ORDER_DETAILS ID="5" AMOUNT="3" PRODUCT_ID="3" PURCHASE_ORDER_ID="2" />
+
+    <ORDER_DETAILS ID="6" AMOUNT="2" PRODUCT_ID="1" PURCHASE_ORDER_ID="3" />
+    <ORDER_DETAILS ID="7" AMOUNT="5" PRODUCT_ID="2" PURCHASE_ORDER_ID="3" />
+    <ORDER_DETAILS ID="8" AMOUNT="4" PRODUCT_ID="4" PURCHASE_ORDER_ID="3" />
+
+    <ORDER_DETAILS ID="9" AMOUNT="7" PRODUCT_ID="5" PURCHASE_ORDER_ID="4" />
+</dataset>

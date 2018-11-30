@@ -18,5 +18,9 @@ public interface PurchaseOrderService {
 
     void deleteOrder(long orderId);
 
+    List<Long> getBuyersIds();
+
+    List<Long> getCustomerOrdersIds(long customerId);
+
     void clear();
 }

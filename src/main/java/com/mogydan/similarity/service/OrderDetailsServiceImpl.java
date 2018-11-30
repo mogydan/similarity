@@ -8,7 +8,9 @@ import com.mogydan.similarity.repository.OrderDetailsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -91,6 +93,14 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
         return ids.stream()
                 .mapToLong(id -> getProductAmount(productId, id))
                 .toArray();
+    }
+
+    @Override
+    public Map<Long, Long> getCustomerPurchaseStatistic(List<Long> customerOrdersIds) {
+        Map<Long, Long> purchaseStatistic = new HashMap<>();
+        orderDetailsRepository.getCustomerPurchaseStatistic(customerOrdersIds)
+                .forEach(p -> purchaseStatistic.put(p.getProductId(), p.getAmount()));
+        return purchaseStatistic;
     }
 
     @Override
