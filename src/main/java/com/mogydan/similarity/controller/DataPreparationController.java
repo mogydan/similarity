@@ -78,7 +78,7 @@ public class DataPreparationController {
         List<OrderDetails> orderDetails = orders.stream()
                 .map(order -> {
                             Set<OrderDetails> items = new HashSet<>();
-                            for (int j = 0; j < new Random().nextInt(products.size() - 1); j++) {
+                            for (int j = 0; j < new Random().nextInt(5) + 1; j++) {
                                 OrderDetails item = new OrderDetails()
                                         .setProduct(products.get(j))
                                         .setPurchaseOrder(order)
