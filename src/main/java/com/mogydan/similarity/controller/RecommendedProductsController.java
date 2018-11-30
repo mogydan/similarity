@@ -36,7 +36,7 @@ public class RecommendedProductsController {
             }
     )
     public Set<Product> getRecommendedProducts(@ApiParam(value = "Customer id to find the recommended products", required = true)
-                                               @PathVariable long customerId) {
+                                               @PathVariable Long customerId) {
         return recommendedProductsService.getRecommendedProducts(customerId);
     }
 

@@ -8,6 +8,7 @@ import com.mogydan.similarity.repository.CustomerRepository;
 import com.mogydan.similarity.repository.OrderDetailsRepository;
 import com.mogydan.similarity.repository.ProductRepository;
 import com.mogydan.similarity.repository.PurchaseOrderRepository;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,11 @@ import java.util.stream.IntStream;
 
 @RestController
 @AllArgsConstructor
+@Api(
+        value = "Test Data Provider",
+        description = "Provide Test Data",
+        tags = {"Test Data Provider"}
+)
 public class DataPreparationController {
 
     private final PurchaseOrderRepository purchaseOrderRepository;

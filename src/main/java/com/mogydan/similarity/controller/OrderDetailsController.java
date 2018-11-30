@@ -122,7 +122,7 @@ public class OrderDetailsController {
     }
 
     @PutMapping("/{orderDetailId}")
-    @ApiOperation(value = "Update order", tags = {"Orders Details"})
+    @ApiOperation(value = "Update order", tags = {"Order Details"})
     @ApiResponses(
             value = {
                     @ApiResponse(code = 200, message = "OK"),
