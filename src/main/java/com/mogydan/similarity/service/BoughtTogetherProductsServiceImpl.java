@@ -27,10 +27,12 @@ public class BoughtTogetherProductsServiceImpl implements BoughtTogetherProducts
         }
 
 
-        long[] vector = orderDetailsService.prepare(productId, orderIds);
+        long[] initVector = orderDetailsService.prepareVector(productId, orderIds);
 
-        SimilarityVector vector1 = new SimilarityVector(vector);
-        if (vector1.isZero()) {return ImmutableList.of();}
+        SimilarityVector vector1 = new SimilarityVector(initVector);
+        if (vector1.isZero()) {
+            return ImmutableList.of();
+        }
 
         return purchasedProductsIds.stream()
                 .filter(id -> productId != id)
@@ -41,13 +43,14 @@ public class BoughtTogetherProductsServiceImpl implements BoughtTogetherProducts
 
     @Override
     public boolean areProductsBoughtTogether(SimilarityVector vector1, long productId2, List<Long> orderIds) {
-        long[] vector = orderDetailsService.prepare(productId2, orderIds);
+        long[] initVector = orderDetailsService.prepareVector(productId2, orderIds);
 
-        SimilarityVector vector2 = new SimilarityVector(vector);
+        SimilarityVector vector2 = new SimilarityVector(initVector);
 
-        if (vector2.isZero()) {return false;}
+        if (vector2.isZero()) {
+            return false;
+        }
         return vector1.getCosine(vector2) > 0.65;
     }
-
 
 }

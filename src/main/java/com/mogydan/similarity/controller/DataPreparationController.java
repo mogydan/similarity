@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -76,23 +79,26 @@ public class DataPreparationController {
 
 
         List<OrderDetails> orderDetails = orders.stream()
-                .map(order -> {
-                            Set<OrderDetails> items = new HashSet<>();
-                            for (int j = 0; j < new Random().nextInt(5) + 1; j++) {
-                                OrderDetails item = new OrderDetails()
-                                        .setProduct(products.get(j))
-                                        .setPurchaseOrder(order)
-                                        .setAmount(new Random().nextInt(20) + 1);
-                                items.add(item);
-                            }
-                            return items;
-                        }
-                )
+                .map(order -> getOrderDetails(products, order))
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
 
         orderDetailsService.addListOfOrderDetails(orderDetails);
 
+    }
+
+    private Set<OrderDetails> getOrderDetails(List<Product> products, PurchaseOrder order) {
+        int detailsAmount = new Random().nextInt(5);
+
+        int random = new Random().nextInt(products.size() / 4);
+
+        return IntStream.range(0, detailsAmount)
+                .mapToObj(i -> new OrderDetails()
+                        .setProduct(products.get(random + i))
+                        .setPurchaseOrder(order)
+                        .setAmount(new Random().nextInt(20) + 1)
+                )
+                .collect(Collectors.toSet());
     }
 
     @DeleteMapping("/data/clear")

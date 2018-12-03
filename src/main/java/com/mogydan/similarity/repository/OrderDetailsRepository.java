@@ -2,6 +2,7 @@ package com.mogydan.similarity.repository;
 
 import com.mogydan.similarity.model.OrderDetails;
 import com.mogydan.similarity.model.ProductAmount;
+import com.mogydan.similarity.model.Purchase;
 import com.mogydan.similarity.model.PurchaseOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -31,9 +32,7 @@ public interface OrderDetailsRepository extends JpaRepository<OrderDetails, Long
     @Query("select distinct purchaseOrder.id from OrderDetails ")
     List<Long> getAllOrdersIds();
 
-    @Query("select new com.mogydan.similarity.model.ProductAmount(product.id,  sum(amount))  " +
-            "from OrderDetails where purchaseOrder.id in ?1  group by product.id")
-    List<ProductAmount> getCustomerPurchaseStatistic(List<Long> customerOrdersIds);
-
-
+    @Query("select new com.mogydan.similarity.model.Purchase(purchaseOrder.customer.id, product.id, sum(amount)) " +
+            "from OrderDetails group by product.id, purchaseOrder.customer.id")
+    List<Purchase> getAllStatistics();
 }

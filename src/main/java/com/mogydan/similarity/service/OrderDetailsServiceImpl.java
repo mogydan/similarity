@@ -3,14 +3,13 @@ package com.mogydan.similarity.service;
 import com.mogydan.similarity.exception.ResourceNotFoundException;
 import com.mogydan.similarity.model.OrderDetails;
 import com.mogydan.similarity.model.ProductAmount;
+import com.mogydan.similarity.model.Purchase;
 import com.mogydan.similarity.model.PurchaseOrder;
 import com.mogydan.similarity.repository.OrderDetailsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -89,18 +88,15 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public long[] prepare(long productId, List<Long> ids) {
+    public long[] prepareVector(long productId, List<Long> ids) {
         return ids.stream()
                 .mapToLong(id -> getProductAmount(productId, id))
                 .toArray();
     }
 
     @Override
-    public Map<Long, Long> getCustomerPurchaseStatistic(List<Long> customerOrdersIds) {
-        Map<Long, Long> purchaseStatistic = new HashMap<>();
-        orderDetailsRepository.getCustomerPurchaseStatistic(customerOrdersIds)
-                .forEach(p -> purchaseStatistic.put(p.getProductId(), p.getAmount()));
-        return purchaseStatistic;
+    public List<Purchase> getAllCustomersStatistic() {
+        return orderDetailsRepository.getAllStatistics();
     }
 
     @Override
