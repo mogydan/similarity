@@ -1,13 +1,13 @@
 package com.mogydan.similarity.service;
 
 import com.mogydan.similarity.model.Product;
-import com.mogydan.similarity.utils.SimilarityVector;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BoughtTogetherProductsService {
 
     List<Product> getBoughtTogetherProducts(long productId);
 
-    boolean areProductsBoughtTogether(SimilarityVector vector1, long productId2, List<Long> orderIds);
+    boolean areProductsBoughtTogether(Map<Long, Long> currentProductStatistic, Map<Long, Long> productStatistic2);
 }

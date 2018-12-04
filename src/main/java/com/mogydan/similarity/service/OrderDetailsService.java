@@ -2,6 +2,7 @@ package com.mogydan.similarity.service;
 
 import com.mogydan.similarity.model.OrderDetails;
 import com.mogydan.similarity.model.ProductAmount;
+import com.mogydan.similarity.model.ProductStatistic;
 import com.mogydan.similarity.model.Purchase;
 
 import java.util.List;
@@ -23,8 +24,6 @@ public interface OrderDetailsService {
 
     List<ProductAmount> getTopSoldProducts();
 
-    long getProductAmountInOrder(long orderId, long productId);
-
     List<Long> getPurchasedProductsIds();
 
     long getProductAmount(long productId, long orderId);
@@ -34,6 +33,8 @@ public interface OrderDetailsService {
     long[] prepareVector(long productId, List<Long> ids);
 
     List<Purchase> getAllCustomersStatistic();
+
+    List<ProductStatistic> getAllProductsStatistic();
 
     void clear();
 }

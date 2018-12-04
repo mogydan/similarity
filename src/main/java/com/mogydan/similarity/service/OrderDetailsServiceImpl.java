@@ -1,10 +1,7 @@
 package com.mogydan.similarity.service;
 
 import com.mogydan.similarity.exception.ResourceNotFoundException;
-import com.mogydan.similarity.model.OrderDetails;
-import com.mogydan.similarity.model.ProductAmount;
-import com.mogydan.similarity.model.Purchase;
-import com.mogydan.similarity.model.PurchaseOrder;
+import com.mogydan.similarity.model.*;
 import com.mogydan.similarity.repository.OrderDetailsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -66,13 +63,6 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     }
 
     @Override
-    public long getProductAmountInOrder(long orderId, long productId) {
-        OrderDetails orderDetails = orderDetailsRepository.findByPurchaseOrder_IdAndProduct_Id(orderId, productId)
-                .orElseGet(() -> new OrderDetails().setAmount(0L));
-        return orderDetails.getAmount();
-    }
-
-    @Override
     public List<Long> getPurchasedProductsIds() {
         return orderDetailsRepository.getPurchasedProductsIds();
     }
@@ -97,6 +87,11 @@ public class OrderDetailsServiceImpl implements OrderDetailsService {
     @Override
     public List<Purchase> getAllCustomersStatistic() {
         return orderDetailsRepository.getAllStatistics();
+    }
+
+    @Override
+    public List<ProductStatistic> getAllProductsStatistic() {
+        return orderDetailsRepository.getAllProductsStatistic();
     }
 
     @Override

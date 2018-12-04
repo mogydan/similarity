@@ -37,6 +37,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getListOfProductsByIds(List<Long> ids) {
+        return productRepository.findAll(ids);
+    }
+
+    @Override
     public void updateProduct(long productId, Product updates) {
         Product product = getProductById(productId);
         product.setName(updates.getName());
